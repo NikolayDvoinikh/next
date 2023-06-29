@@ -17,6 +17,32 @@
   }
 }
 
+.lang {
+  padding: 8px 0px;
+  font-size: 20px;
+  line-height: 1.35;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #7a2e66;
+  margin-right: 50px;
+
+  @media screen and (min-width: 768px) {
+    margin: 0;
+  }
+}
+
+.lang:focus,
+.lang:hover {
+  border: none;
+  outline: none;
+}
+
+.lang_opt {
+  cursor: pointer;
+  background-color: transparent;
+}
+
 .nav {
   @media screen and (min-width: 768px) {
     display: block;

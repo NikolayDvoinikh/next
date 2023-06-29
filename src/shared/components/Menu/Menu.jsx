@@ -4,7 +4,7 @@ import Link from "next/link";
 import styles from "./menu.module.scss";
 import { usePathname } from "next/navigation";
 
-export default function Menu({ list, customClass }) {
+export default function Menu({ list, customClass, handleClick }) {
   const pathName = usePathname();
 
   const items = list.map(({ label, path }) => {
@@ -15,7 +15,7 @@ export default function Menu({ list, customClass }) {
 
     return (
       <li key={label}>
-        <Link href={path} className={fullClass}>
+        <Link href={path} className={fullClass} onClick={handleClick}>
           {label}
         </Link>
       </li>

@@ -13,10 +13,18 @@ export default function Navigation({ list }) {
 
   return (
     <>
+      <select className={styles.lang}>
+        <option value="Eng" className={styles.lang_opt}>
+          EN
+        </option>
+        <option value="Укр" className={styles.lang_opt}>
+          UA
+        </option>
+      </select>
       <nav
         className={menu ? [styles.nav, styles.active].join(" ") : styles.nav}
       >
-        <Menu list={list} customClass={styles.link} />
+        <Menu list={list} customClass={styles.link} handleClick={toggleMenu} />
       </nav>
 
       {menu ? (
