@@ -1,5 +1,5 @@
 import { connectToDB } from "@/utils/database";
-import Zone from "@/models/zones";
+import Zone from "@/models/zone";
 import { NextResponse } from "next/server";
 
 export const GET = async (req) => {

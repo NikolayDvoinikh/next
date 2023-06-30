@@ -2,7 +2,7 @@ import styles from "./about-us.module.scss";
 
 export default function AboutUs() {
   return (
-    <>
+    <div className={styles.sky}>
       <h1 className={styles.title}>"ELIN Ltd" firm LLC </h1>
       <p className={styles.about}>
         "ELIN Ltd" firm LLC is a Ukrainian logistics company that has had the
@@ -11,6 +11,6 @@ export default function AboutUs() {
         countries of the world and truck transportation within Ukraine,
         providing a full range of services for customs clearance of cargo.
       </p>
-    </>
+    </div>
   );
 }
