@@ -26,6 +26,9 @@
   outline: none;
   color: #7a2e66;
   margin-right: 50px;
+  display: flex;
+  width: 80px;
+  justify-content: space-between;
 
   @media screen and (min-width: 768px) {
     margin: 0;

@@ -1,0 +1,24 @@
+{
+  "Header": {
+    "links": {
+      "about": "About Us",
+      "services": "Services",
+      "track": "Tracking",
+      "rates": "Rates",
+      "information": "Information",
+      "contacts": "Contacts"
+    }
+  },
+  "Home": {
+    "m-title": "Elin Ltd",
+    "m-description": "",
+    "p-title": "Welcome to logistic world",
+    "content": ""
+  },
+  "About": {
+    "m-title": "Elin Ltd | About",
+    "m-description": "",
+    "p-title": "\"ELIN Ltd\" firm LLC",
+    "content": "\"ELIN Ltd\" firm LLC is a Ukrainian logistics company that has had the official status of an express carrier in Ukraine since 1993. Specializes in international courier delivery of express shipments to more than 220 countries of the world and truck transportation within Ukraine, providing a full range of services for customs clearance of cargo."
+  }
+}
