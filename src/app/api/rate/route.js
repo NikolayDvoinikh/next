@@ -4,13 +4,14 @@ import { NextResponse } from "next/server";
 
 export const GET = async (req) => {
   const { searchParams } = new URL(req.url);
-  const query = searchParams.get("zone") || null;
-  const limit = searchParams.get("limit") || 5;
+  const zone = searchParams.get("zone") || null;
+  const pak = searchParams.get("pak") || null;
+
   try {
     await connectToDB();
-    const zone = await Zone.find(query ? { zone: query } : {}).limit(limit);
+    const price = await Zone.find(zone && pak ? { zone, pak } : {});
 
-    return NextResponse.json(zone, { status: 200 });
+    return NextResponse.json({ price }, { status: 200 });
   } catch (error) {
     console.log(error.message);
   }

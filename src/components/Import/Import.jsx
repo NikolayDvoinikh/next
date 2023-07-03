@@ -6,8 +6,8 @@ export const metadata = {
 };
 
 export default async function Import() {
-  const res = await fetch("http://localhost:3000/api/rate", { zone: "A" });
-  const data = await res.json(res);
+  const res = await fetch("http://localhost:3000/api/rate");
+  const { price } = await res.json(res);
 
   // useEffect(() => {
   //   const fetchPrice = async () => {
@@ -22,7 +22,7 @@ export default async function Import() {
   return (
     <>
       <h3 className={styles.title}>Import</h3>
-      {data.map(({ env }) => (
+      {price.map(({ env }) => (
         <p>{env[0.5]}</p>
       ))}
     </>
