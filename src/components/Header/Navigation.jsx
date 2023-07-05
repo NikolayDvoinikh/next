@@ -4,7 +4,9 @@ import styles from "./header.module.scss";
 import { useState } from "react";
 import Menu from "@/shared/components/Menu/Menu";
 import Link from "next-intl/link";
+import LinkN from "next/link";
 import { usePathname } from "next-intl/client";
+import { signOut, useSession } from "next-auth/react";
 
 export default function Navigation({ list }) {
   const [menu, setMenu] = useState(false);
@@ -14,16 +16,10 @@ export default function Navigation({ list }) {
     setMenu(!menu);
   };
 
+  const session = useSession();
+  console.log(session);
   return (
     <>
-      {/* <select className={styles.lang}>
-        <option value="Eng" className={styles.lang_opt}>
-          EN
-        </option>
-        <option value="Укр" className={styles.lang_opt}>
-          UA
-        </option>
-      </select> */}
       <div className={styles.lang}>
         <Link href={path} locale="en" className={styles.lang_opt}>
           EN
@@ -32,6 +28,14 @@ export default function Navigation({ list }) {
         <Link href={path} locale="uk" className={styles.lang_opt}>
           Укр
         </Link>
+        {session?.data && <Link href="/cabinet">Cabinet</Link>}
+        {session?.data ? (
+          <LinkN href="#" onClick={() => signOut({ callbackUrl: "/" })}>
+            SignOut
+          </LinkN>
+        ) : (
+          <LinkN href="/api/auth/signin">SignIn</LinkN>
+        )}
       </div>
       <nav
         className={menu ? [styles.nav, styles.active].join(" ") : styles.nav}

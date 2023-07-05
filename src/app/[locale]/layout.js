@@ -3,6 +3,7 @@ import { useLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/Header/Header";
 import { getTranslator } from "next-intl/server";
+import { Providers } from "@/components/Providers";
 
 export async function generateMetadata({ params: { locale } }) {
   const t = await getTranslator(locale, "Home");
@@ -21,8 +22,10 @@ export default function RootLayout({ children, params }) {
   return (
     <html lang={locale}>
       <body>
-        <Header />
-        <main>{children}</main>
+        <Providers>
+          <Header />
+          <main>{children}</main>
+        </Providers>
       </body>
     </html>
   );
