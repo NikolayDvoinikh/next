@@ -1,8 +1,4 @@
-import authMiddleware from "next-auth/middleware";
-
 import createMiddleware from "next-intl/middleware";
-
-export { authMiddleware };
 
 export default createMiddleware({
   // A list of all locales that are supported

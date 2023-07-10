@@ -6,18 +6,16 @@ import Menu from "@/shared/components/Menu/Menu";
 import Link from "next-intl/link";
 import LinkN from "next/link";
 import { usePathname } from "next-intl/client";
-import { signOut, useSession } from "next-auth/react";
 
 export default function Navigation({ list }) {
   const [menu, setMenu] = useState(false);
+  const [session, setSession] = useState(true);
   const path = usePathname();
 
   const toggleMenu = () => {
     setMenu(!menu);
   };
 
-  const session = useSession();
-  console.log(session);
   return (
     <>
       <div className={styles.lang}>
@@ -28,13 +26,15 @@ export default function Navigation({ list }) {
         <Link href={path} locale="uk" className={styles.lang_opt}>
           Укр
         </Link>
-        {session?.data && <Link href="/cabinet">Cabinet</Link>}
-        {session?.data ? (
-          <LinkN href="#" onClick={() => signOut({ callbackUrl: "/" })}>
+        {session && <Link href="/cabinet">Cabinet</Link>}
+        {session ? (
+          <LinkN href="#" onClick={() => setSession(false)}>
             SignOut
           </LinkN>
         ) : (
-          <LinkN href="/api/auth/signin">SignIn</LinkN>
+          <LinkN href="#" onClick={() => setSession(true)}>
+            SignIn
+          </LinkN>
         )}
       </div>
       <nav
