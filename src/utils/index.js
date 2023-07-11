@@ -1,1 +1,1 @@
-export { getPrice } from "./services/price";
+export { getPrice, getFuel } from "./services/price";
