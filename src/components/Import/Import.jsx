@@ -1,30 +1,19 @@
 import styles from "./import.module.scss";
-// import { useState, useEffect } from "react";
+import { getPrice } from "@/utils";
+
 export const metadata = {
   title: "Import services",
   description: "Custom clearence, taxes, import, export",
 };
 
 export default async function Import() {
-  const res = await fetch("http://localhost:3000/api/rate");
-  const { price } = await res.json(res);
-
-  // useEffect(() => {
-  //   const fetchPrice = async () => {
-  //     const res = await fetch("/api/rate", { zone: "A" });
-  //     const data = await res.json(res);
-  //     setPrice(data);
-  //     console.log(price);
-  //   };
-  //   fetchPrice();
-  // }, []);
+  const { price } = await getPrice("c", "cargo", 1.5);
+  console.log(price);
 
   return (
     <>
       <h3 className={styles.title}>Import</h3>
-      {price.map(({ env }) => (
-        <p>{env[0.5]}</p>
-      ))}
+      {price}
     </>
   );
 }
