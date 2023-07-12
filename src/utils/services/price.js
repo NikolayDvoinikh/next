@@ -26,3 +26,21 @@ export const getFuel = async () => {
     console.log(error.message);
   }
 };
+
+export const setFuel = async (body) => {
+  try {
+    console.log(body);
+    const resp = await fetch(`http://localhost:3001/api/transporters/fuel`, {
+      body: JSON.stringify(body),
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (!resp.ok) throw new Error("check data");
+
+    const { response } = await resp.json();
+    return response;
+  } catch (error) {
+    console.log(error.message);
+  }
+};

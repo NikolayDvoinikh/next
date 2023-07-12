@@ -1,13 +1,16 @@
 // "use client";
-import { getFuel } from "@/utils";
+import { getFuel, setFuel } from "@/utils";
+import { Button } from "@/shared/components";
+
 export const Admin = async () => {
   const { data } = await getFuel();
-  const fuelPrice = data[0].value;
+  const jetFuelPrice = data[0].value;
+
   const currency = await fetch(
     "https://bank.gov.ua/NBU_Exchange/exchange?json"
   );
   const curr = await currency.json();
-  const currensyElem = curr.map(
+  const currencyElem = curr.map(
     ({ StartDate, CurrencyCodeL, Amount, Units }) => {
       if (
         CurrencyCodeL === "EUR" ||
@@ -26,12 +29,25 @@ export const Admin = async () => {
       }
     }
   );
+
+  // const handleClick = async () => {
+  //   const body = { jetFuelPrice, carrier: "FedEx" };
+  //   const result = await setFuel(body);
+  //   return result.json();
+  // };
+
   return (
     <div>
       <h2>
-        Information about fuel:<p> Price: {fuelPrice}</p>
+        Information about fuel:<p> Price: {jetFuelPrice} Dollars per Gallon</p>
       </h2>
-      {currensyElem}
+      {currencyElem}
+      <div>
+        <Button jetFuelPrice={jetFuelPrice}>
+          Update Fuel Surcharge automatic
+        </Button>
+        {/* <Button handleClick={}>Update Fuel Surcharge manual</Button> */}
+      </div>
     </div>
   );
 };
