@@ -1,12 +1,12 @@
-import { Admin } from "@/components";
+import { Admin, User } from "@/components";
 const isAuth = true;
-const role = "Admin";
-export default async function Cabinet() {
+const role = "User";
+export default function Cabinet() {
   return (
-    <div>
-      <h2>Session of Admin</h2>
+    <section>
+      <h2>Session of {role}</h2>
       {isAuth && role === "Admin" && <Admin />}
       {isAuth && role === "User" && <User />}
-    </div>
+    </section>
   );
 }
